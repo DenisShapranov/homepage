@@ -1,0 +1,39 @@
+Question 0 - Накатить бэкап базы 
+
+mongodump
+
+Question 1 -  Найти средний возраст людей в системе
+
+MongoDB Enterprise > db.users.aggregate( [ {$group :{ _id : "User", avg_age: { $avg : "$age" }}} ] )
+
+{ "_id" : "User", "avg_age" : 30.38862559241706 }
+
+
+Question 2 - Найти средний возраст в штате Аляска
+
+MongoDB Enterprise > db.users.aggregate( [ {$match: {address : {regex:/Alaska/}}}, {$group :{ _id : "User", avg_age: { $avg :"$age" }}} ] ) - не сработало
+
+MongoDB Enterprise > db.users.find({address: {$regex:"Alaska"}}).count()   14      - нашло 14 человек
+
+
+
+Question 3 - Начиная от Math.ceil(avg + avg_alaska) (порядковый номер документа в БД ) найти первого человека с другом по имени Деннис
+
+
+
+Question 4 - Найти активных людей из того же штата, что и предыдущий человек и посмотреть какой фрукт любят больше всего в этом штате (аггрегация)
+
+
+
+Question 5 - Найти саммого раннего зарегистрировавшегося пользователя с таким любимым фруктом
+
+
+
+Question 6 -  Добавить этому пользовелю свойтво: { features: 'first apple eater' }
+
+
+
+Question 7 - Удалить всех любителей клубники (написать количество удаленных пользователей)
+
+MongoDB Enterprise > db.users.remove({favoriteFruit : "strawberry"})
+WriteResult({ "nRemoved" : 253 })
