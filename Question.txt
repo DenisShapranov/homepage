@@ -23,6 +23,12 @@ Question 3 - Начиная от Math.ceil(avg + avg_alaska) (порядковы
 
 Question 4 - Найти активных людей из того же штата, что и предыдущий человек и посмотреть какой фрукт любят больше всего в этом штате (аггрегация)
 
+MongoDB Enterprise > db.users.find({$and : [{address: {$regex:"Alaska"}},  {isActive:true}]}, {favoriteFruit:1}
+{ "_id" : ObjectId("5adf3c1544abaca147cdd376"), "favoriteFruit" : "banana" }
+{ "_id" : ObjectId("5adf3c1544abaca147cdd3b2"), "favoriteFruit" : "banana" }
+{ "_id" : ObjectId("5adf3c1544abaca147cdd545"), "favoriteFruit" : "apple" }
+{ "_id" : ObjectId("5adf3c1544abaca147cdd5f6"), "favoriteFruit" : "apple" }
+{ "_id" : ObjectId("5adf3c1544abaca147cdd673"), "favoriteFruit" : "apple" }
 
 
 Question 5 - Найти саммого раннего зарегистрировавшегося пользователя с таким любимым фруктом
@@ -37,3 +43,4 @@ Question 7 - Удалить всех любителей клубники (нап
 
 MongoDB Enterprise > db.users.remove({favoriteFruit : "strawberry"})
 WriteResult({ "nRemoved" : 253 })
+
