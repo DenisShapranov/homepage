@@ -1,6 +1,6 @@
 Question 0 - Накатить бэкап базы 
 
-mongodump
+mongodump --db sampleDB --collection users
 
 Question 1 -  Найти средний возраст людей в системе
 
